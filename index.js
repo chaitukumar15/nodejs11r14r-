@@ -1,30 +1,36 @@
+var http = require("http");
+
+var url = require("url");
 
 
-var http=require("http");
+var server = http.createServer(async(req, res) => {
+
+   var f=""
+    req.on("data",(chunk)=>{
+
+        f+=chunk;
+    })
+    req.on("end",()=>{
+        console.log(JSON.parse(f));
+        
+    })
+    console.log(req.method);
+
+    console.log(req.url);
+
+    console.log(url.parse(req.url,true))
+
+    console.log(req.headers["content-type"]);
+
+    console.log(req.query);
 
 
-var server =http.createServer((req,res)=>{
-
-    console.log(req.url,"herllo");
+    res.redirect(200,"https://fakestoreapi.com/products")
     
-    if(req.url=="/chaitanya"){
+    res.end("j");
+});
 
-        res.end("chaitnaya");
-
-    }
-
-    else{
-        res.end("ending")
-    }
-
-
-})
-
-var port=3005;
-server.listen(port,()=>{
-
-
-console.log("hi server started "+port);
-
-
-})
+var port = 3005;
+server.listen(port, () => {
+  console.log("hi server started " + port);
+});
