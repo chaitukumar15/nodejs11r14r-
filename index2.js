@@ -4,6 +4,9 @@ var url=require("url");
 
 var server=http.createServer((req,res)=>{
 
+    var j=[
+        
+    ]
  
 
     var parsed=url.parse(req.url,true);
@@ -15,10 +18,7 @@ var server=http.createServer((req,res)=>{
 
     var num=parsed.pathname.split("/")[parsed.pathname.length-1]
 
-    console.log(parsed.pathname,"jhfhj");
-    
-    console.log(parsed.pathname.length,"jyfyf");
-    
+
     
     res.end(JSON.stringify(parsed.query))
 
